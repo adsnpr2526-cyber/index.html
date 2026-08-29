@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ระบบรายงานสภาพถนนและปัญหาในชุมชน</title>
+    <title>ระบบแจ้งเรื่องร้องเรียน & สภาพถนน - อบต.คลองกระบือ</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://					cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Leaflet Map CSS & JS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -47,8 +47,8 @@
                     <i class="fa-solid fa-road-barrier text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="text-lg md:text-xl font-bold tracking-tight">แจ้งสภาพถนนชุมชน</h1>
-                    <p class="text-xs text-indigo-200">ระบบรับเรื่องร้องเรียน & ติดตามการซ่อมแซม</p>
+                    <h1 class="text-lg md:text-xl font-bold tracking-tight">แจ้งเรื่องร้องเรียน อบต.คลองกระบือ</h1>
+                    <p class="text-xs text-indigo-200">ระบบรับเรื่องร้องเรียนถนนและสิ่งสาธารณูปโภค</p>
                 </div>
             </div>
             
@@ -73,7 +73,7 @@
             </button>
             <button id="tab-btn-admin" onclick="switchTab('admin')" class="py-3 px-2 border-b-2 border-transparent text-slate-500 hover:text-indigo-600 flex items-center space-x-2">
                 <i class="fa-solid fa-user-shield"></i>
-                <span>สำหรับเจ้าหน้าที่</span>
+                <span>สำหรับเจ้าหน้าที่ อบต.</span>
             </button>
         </div>
     </nav>
@@ -103,7 +103,7 @@
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 space-y-3">
                 <div class="flex justify-between items-center">
                     <h2 class="text-base font-semibold text-slate-800 flex items-center">
-                        <i class="fa-solid fa-map text-indigo-600 mr-2"></i> แผนที่จุดแจ้งเหตุในชุมชน
+                        <i class="fa-solid fa-map text-indigo-600 mr-2"></i> แผนที่จุดแจ้งเหตุ ต.คลองกระบือ
                     </h2>
                     <span class="text-xs text-slate-400">คลิกที่หมุดเพื่อดูรายละเอียด</span>
                 </div>
@@ -138,9 +138,9 @@
             <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
                 <div class="border-b border-slate-100 pb-4">
                     <h2 class="text-xl font-bold text-slate-800 flex items-center">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-500 mr-2"></i> ฟอร์มแจ้งปัญหาถนน/สิ่งสาธารณูปโภค
+                        <i class="fa-solid fa-triangle-exclamation text-amber-500 mr-2"></i> ฟอร์มแจ้งปัญหา อบต.คลองกระบือ
                     </h2>
-                    <p class="text-xs text-slate-500 mt-1">ช่วยกันระบุพิกัดและถ่ายรูป เพื่อความรวดเร็วในการเข้าแก้ไขของเจ้าหน้าที่</p>
+                    <p class="text-xs text-slate-500 mt-1">ช่วยกันระบุพิกัด GPS และถ่ายรูป เพื่อความรวดเร็วในการเข้าแก้ไขของเจ้าหน้าที่</p>
                 </div>
 
                 <form id="report-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
@@ -150,33 +150,33 @@
                         <label class="block text-sm font-medium text-slate-700 mb-1">ประเภทปัญหา <span class="text-rose-500">*</span></label>
                         <select id="issue-type" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:bg-white">
                             <option value="">-- กรุณาเลือกประเภทปัญหา --</option>
-                            <option value="ถนนเป็นหลุมเป็นบ่อ">🕳️ ถนนเป็นหลุมเป็นบ่อ / เป็นพ้นคันชำรุด</option>
-                            <option value="ไฟส่องสว่างดับ">💡 ไฟส่องสว่างดับ / ชำรุด</option>
+                            <option value="ถนนเป็นหลุมเป็นบ่อ">🕳️ ถนนเป็นหลุมเป็นบ่อ / ไหล่ทางชำรุด</option>
+                            <option value="ไฟส่องสว่างดับ">💡 ไฟส่องสว่างดับ / ไฟทางชำรุด</option>
                             <option value="น้ำท่วมขัง/ท่ออุดตัน">🌊 น้ำท่วมขัง / ท่อระบายน้ำอุดตัน</option>
                             <option value="ต้นไม้ล้ม/กีดขวางทาง">🌳 ต้นไม้ล้ม / สิ่งกีดขวางการจราจร</option>
-                            <option value="ป้ายจราจร/ไหล่ทางพัง">🛑 ป้ายจราจรชำรุด / ไหล่ทางทรุด</option>
+                            <option value="ป้ายจราจร/ไหล่ทางพัง">🛑 ป้ายจราจรชำรุด / เสียงตามสายพัง</option>
                             <option value="อื่นๆ">⚠️ อื่นๆ</option>
                         </select>
                     </div>
 
                     <!-- Description -->
                     <div>
-                        <label class="block text-sm font-medium text-slate-700 mb-1">รายละเอียดเพิ่มเติม / จุดสังเกต <span class="text-rose-500">*</span></label>
-                        <textarea id="issue-description" rows="3" required placeholder="ระบุรายละเอียด เช่น หน้าบ้านเลขที่... หรือ ใกล้กับร้านค้า..." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:bg-white"></textarea>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">รายละเอียด / จุดสังเกต / หมู่ที่ <span class="text-rose-500">*</span></label>
+                        <textarea id="issue-description" rows="3" required placeholder="ระบุรายละเอียด เช่น หมู่ 2 หน้าบ้านเลขที่... หรือ ใกล้กับวัด..." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-indigo-500 focus:bg-white"></textarea>
                     </div>
 
                     <!-- Map Location Selector -->
                     <div>
                         <div class="flex justify-between items-center mb-1.5">
                             <label class="text-sm font-medium text-slate-700">ระบุพิกัดตำแหน่งบนแผนที่ <span class="text-rose-500">*</span></label>
-                            <button type="button" onclick="getCurrentLocation()" class="text-xs bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-2.5 py-1 rounded-md font-medium transition flex items-center">
-                                <i class="fa-solid fa-location-crosshairs mr-1"></i> ดึง GPS ปัจจุบัน
+                            <button type="button" onclick="getCurrentLocation()" class="text-xs bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-2.5 py-1 rounded-md font-medium transition flex items-center border border-indigo-200">
+                                <i class="fa-solid fa-location-crosshairs mr-1 text-rose-500"></i> ดึง GPS ปัจจุบัน
                             </button>
                         </div>
                         <div id="map-selector"></div>
                         <input type="hidden" id="geo-lat" required>
                         <input type="hidden" id="geo-lng" required>
-                        <p class="text-xs text-slate-500 mt-1" id="location-status"><i class="fa-solid fa-circle-info mr-1"></i> คลิกบนแผนที่เพื่อเลื่อนหมุดไปยังจุดเกิดเหตุ</p>
+                        <p class="text-xs text-slate-500 mt-1" id="location-status"><i class="fa-solid fa-circle-info mr-1"></i> คลิกหรือลากหมุดไปยังจุดเกิดเหตุในพื้นที่ ต.คลองกระบือ</p>
                     </div>
 
                     <!-- Photo Upload -->
@@ -214,9 +214,9 @@
             <div class="bg-indigo-900 text-white p-6 rounded-2xl shadow-md flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                     <h2 class="text-xl font-bold flex items-center">
-                        <i class="fa-solid fa-user-shield mr-2 text-amber-400"></i> แผงควบคุมสำหรับเจ้าหน้าที่ท้องถิ่น
+                        <i class="fa-solid fa-user-shield mr-2 text-amber-400"></i> แผงควบคุมสำหรับเจ้าหน้าที่ อบต.คลองกระบือ
                     </h2>
-                    <p class="text-xs text-indigo-200 mt-1">จัดการเปลี่ยนสถานะการซ่อมแซม และส่งออกข้อมูลนำไปใช้ใน Google Sheets</p>
+                    <p class="text-xs text-indigo-200 mt-1">จัดการเปลี่ยนสถานะการซ่อมแซม และส่งออกไฟล์ CSV ไปยัง Excel/Google Sheets</p>
                 </div>
                 <div class="flex space-x-2">
                     <button onclick="exportToCSV()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center shadow">
@@ -224,6 +224,9 @@
                     </button>
                     <button onclick="resetData()" class="bg-rose-700 hover:bg-rose-600 text-white px-3 py-2 rounded-lg text-xs font-medium transition">
                         <i class="fa-solid fa-rotate-right mr-1"></i> ล้างข้อมูลตัวอย่าง
+                    </button>
+                    <button onclick="adminLogout()" class="bg-slate-700 hover:bg-slate-600 text-white px-3 py-2 rounded-lg text-xs font-medium transition flex items-center">
+                        <i class="fa-solid fa-right-from-bracket mr-1"></i> ออกจากระบบ
                     </button>
                 </div>
             </div>
@@ -254,8 +257,31 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
-        <p>ระบบรายงานสภาพถนนชุมชน (Community Crowdsourced Road Report Prototype) &bull; สนับสนุนการใช้ No-Code & Open Data</p>
+        <p>องค์การบริหารส่วนตำบลคลองกระบือ (อบต.คลองกระบือ) &bull; ระบบรายงานสภาพถนนและสิ่งสาธารณูปโภค</p>
     </footer>
+
+    <!-- Admin Password Auth Modal -->
+    <div id="admin-login-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl border border-slate-100">
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800">เข้าสู่ระบบสำหรับเจ้าหน้าที่</h3>
+                <p class="text-xs text-slate-500">กรุณากรอกรหัสผ่านเพื่อเข้าใช้งานเมนูผู้ดูแลระบบ</p>
+            </div>
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                <div>
+                    <input type="password" id="admin-password-input" placeholder="ป้อนรหัสผ่านเข้าสู่ระบบ..." required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-sm text-center font-mono focus:ring-2 focus:ring-indigo-500 focus:bg-white">
+                    <p id="admin-login-error" class="text-xs text-rose-500 mt-1.5 text-center hidden"><i class="fa-solid fa-circle-exclamation mr-1"></i> รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง</p>
+                </div>
+                <div class="flex space-x-2">
+                    <button type="button" onclick="closeAdminLoginModal()" class="w-1/2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold py-2.5 rounded-lg transition">ยกเลิก</button>
+                    <button type="submit" class="w-1/2 bg-indigo-700 hover:bg-indigo-800 text-white text-xs font-semibold py-2.5 rounded-lg transition shadow">เข้าสู่ระบบ</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Detail Modal -->
     <div id="detail-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
@@ -277,15 +303,23 @@
 
     <!-- Application JavaScript Logic -->
     <script>
+        // Klong Krabue Center Coordinates
+        const KLONG_KRABUE_LAT = 8.3845;
+        const KLONG_KRABUE_LNG = 99.9832;
+
+        // Passcode configuration
+        const ADMIN_PASSCODE = 'admin123';
+        let isAdminLoggedIn = false;
+
         // Default Mock Data for initial load
         const defaultReports = [
             {
-                id: 'REP-1001',
+                id: 'KB-1001',
                 timestamp: '2026-08-28 09:30',
                 type: 'ถนนเป็นหลุมเป็นบ่อ',
-                description: 'ถนนสายหลักหมู่ 3 เป็นหลุมขนาดใหญ่ลึกประมาณ 10 ซม. รถจักรยานยนต์เสี่ยงเกิดอุบัติเหตุอย่างมาก',
-                lat: 8.4215,
-                lng: 99.9632,
+                description: 'ถนนสายหลักหมู่ 2 ต.คลองกระบือ เป็นหลุมขนาดใหญ่ รถจักรยานยนต์เสี่ยงเกิดอุบัติเหตุ',
+                lat: 8.3850,
+                lng: 99.9840,
                 photo: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=500&q=80',
                 reporter: 'สมชาย ใจดี',
                 phone: '081-234-5678',
@@ -293,30 +327,17 @@
                 adminNote: ''
             },
             {
-                id: 'REP-1002',
+                id: 'KB-1002',
                 timestamp: '2026-08-27 18:45',
                 type: 'ไฟส่องสว่างดับ',
-                description: 'หลอดไฟส่องสว่างทางเข้าซอยวัดดับ 2 ดวง มืดมากในตอนกลางคืน',
-                lat: 8.4190,
-                lng: 99.9605,
+                description: 'หลอดไฟส่องสว่างทางเข้าหมู่ 4 ดับ 2 ดวง มืดมากในตอนกลางคืน',
+                lat: 8.3820,
+                lng: 99.9810,
                 photo: 'https://images.unsplash.com/photo-1509114397022-ed747cca3f65?w=500&q=80',
                 reporter: 'นางมารศรี',
                 phone: '089-876-5432',
                 status: 'in_progress',
-                adminNote: 'เจ้าหน้าที่ไฟฟ้ากำลังสั่งซื้ออะไหล่หลอด LED เข้ามาเปลี่ยน'
-            },
-            {
-                id: 'REP-1003',
-                timestamp: '2026-08-25 11:15',
-                type: 'น้ำท่วมขัง/ท่ออุดตัน',
-                description: 'เศษขยะและดินทับถมขอบทาง ระบายน้ำไม่ทันเมื่อฝนตกหนัก',
-                lat: 8.4230,
-                lng: 99.9650,
-                photo: 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?w=500&q=80',
-                reporter: 'อนันต์ ชุมชนแข็งแกร่ง',
-                phone: '086-111-2222',
-                status: 'resolved',
-                adminNote: 'ทีมงานฝ่ายช่างเทศบาลทำการขุดลอกท่อระบายน้ำเรียบร้อยแล้ว'
+                adminNote: 'เจ้าหน้าที่กองช่าง อบต.คลองกระบือ กำลังจัดเตรียมอุปกรณ์เข้าแก้ไข'
             }
         ];
 
@@ -340,7 +361,7 @@
 
         // Local Storage Handlers
         function loadReportsFromStorage() {
-            const stored = localStorage.getItem('community_road_reports');
+            const stored = localStorage.getItem('klong_krabue_road_reports');
             if (stored) {
                 reports = JSON.parse(stored);
             } else {
@@ -350,7 +371,7 @@
         }
 
         function saveReportsToStorage() {
-            localStorage.setItem('community_road_reports', JSON.stringify(reports));
+            localStorage.setItem('klong_krabue_road_reports', JSON.stringify(reports));
         }
 
         function resetData() {
@@ -365,8 +386,15 @@
             }
         }
 
-        // Tab Navigation
+        // Tab Navigation & Auth Protection
         function switchTab(tabName) {
+            if (tabName === 'admin' && !isAdminLoggedIn) {
+                document.getElementById('admin-password-input').value = '';
+                document.getElementById('admin-login-error').classList.add('hidden');
+                document.getElementById('admin-login-modal').classList.remove('hidden');
+                return;
+            }
+
             ['feed', 'report', 'admin'].forEach(t => {
                 document.getElementById(`tab-${t}`).classList.add('hidden');
                 document.getElementById(`tab-btn-${t}`).className = "py-3 px-2 border-b-2 border-transparent text-slate-500 hover:text-indigo-600 flex items-center space-x-2";
@@ -382,21 +410,40 @@
             }
         }
 
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const inputPass = document.getElementById('admin-password-input').value;
+            if (inputPass === ADMIN_PASSCODE) {
+                isAdminLoggedIn = true;
+                document.getElementById('admin-login-modal').classList.add('hidden');
+                switchTab('admin');
+            } else {
+                document.getElementById('admin-login-error').classList.remove('hidden');
+            }
+        }
+
+        function closeAdminLoginModal() {
+            document.getElementById('admin-login-modal').classList.add('hidden');
+        }
+
+        function adminLogout() {
+            isAdminLoggedIn = false;
+            alert('ออกจากระบบสำหรับเจ้าหน้าที่เรียบร้อยแล้ว');
+            switchTab('feed');
+        }
+
         // Maps Setup
         function initSelectorMap() {
-            const defaultLat = 8.4215;
-            const defaultLng = 99.9632;
-
-            selectorMap = L.map('map-selector').setView([defaultLat, defaultLng], 14);
+            selectorMap = L.map('map-selector').setView([KLONG_KRABUE_LAT, KLONG_KRABUE_LNG], 14);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; OpenStreetMap'
             }).addTo(selectorMap);
 
-            selectorMarker = L.marker([defaultLat, defaultLng], { draggable: true }).addTo(selectorMap);
+            selectorMarker = L.marker([KLONG_KRABUE_LAT, KLONG_KRABUE_LNG], { draggable: true }).addTo(selectorMap);
             
-            document.getElementById('geo-lat').value = defaultLat;
-            document.getElementById('geo-lng').value = defaultLng;
+            document.getElementById('geo-lat').value = KLONG_KRABUE_LAT;
+            document.getElementById('geo-lng').value = KLONG_KRABUE_LNG;
 
             selectorMap.on('click', (e) => {
                 const { lat, lng } = e.latlng;
@@ -410,12 +457,14 @@
                 const { lat, lng } = e.target.getLatLng();
                 document.getElementById('geo-lat').value = lat.toFixed(6);
                 document.getElementById('geo-lng').value = lng.toFixed(6);
+                document.getElementById('location-status').innerHTML = `<span class="text-emerald-600 font-medium"><i class="fa-solid fa-circle-check"></i> เลือกระบุพิกัดเรียบร้อย (${lat.toFixed(4)}, ${lng.toFixed(4)})</span>`;
             });
         }
 
+        // GPS Location Function
         function getCurrentLocation() {
             if (navigator.geolocation) {
-                document.getElementById('location-status').innerHTML = `<span class="text-amber-600"><i class="fa-solid fa-spinner fa-spin"></i> กำลังค้นหาตำแหน่ง GPS...</span>`;
+                document.getElementById('location-status').innerHTML = `<span class="text-amber-600"><i class="fa-solid fa-spinner fa-spin"></i> กำลังค้นหาตำแหน่ง GPS ของคุณ...</span>`;
                 navigator.geolocation.getCurrentPosition((pos) => {
                     const lat = pos.coords.latitude;
                     const lng = pos.coords.longitude;
@@ -423,15 +472,21 @@
                     selectorMarker.setLatLng([lat, lng]);
                     document.getElementById('geo-lat').value = lat.toFixed(6);
                     document.getElementById('geo-lng').value = lng.toFixed(6);
-                    document.getElementById('location-status').innerHTML = `<span class="text-emerald-600 font-medium"><i class="fa-solid fa-circle-check"></i> ดึงตำแหน่ง GPS ปัจจุบันสำเร็จแล้ว</span>`;
+                    document.getElementById('location-status').innerHTML = `<span class="text-emerald-600 font-medium"><i class="fa-solid fa-circle-check"></i> ดึงตำแหน่ง GPS ปัจจุบันสำเร็จ (${lat.toFixed(4)}, ${lng.toFixed(4)})</span>`;
                 }, (err) => {
-                    alert('ไม่สามารถเข้าถึง GPS ของคุณได้ กรุณาคลิกเลือกตำแหน่งบนแผนที่แทน');
+                    alert('ไม่สามารถเปิดใช้งาน GPS บนมือถือได้ กรุณากดอนุญาตสิทธิ์ตำแหน่ง หรือเลื่อนหมุดบนแผนที่แทน');
+                    document.getElementById('location-status').innerHTML = `<span class="text-rose-500"><i class="fa-solid fa-triangle-exclamation"></i> ไม่สามารถดึง GPS ได้ กรุณาเลื่อนหมุดบนแผนที่</span>`;
+                }, {
+                    enableHighAccuracy: true,
+                    timeout: 10000
                 });
+            } else {
+                alert('อุปกรณ์ของคุณไม่รองรับการดึงพิกัด GPS');
             }
         }
 
         function initMainMap() {
-            mainMap = L.map('main-map').setView([8.4215, 99.9632], 14);
+            mainMap = L.map('main-map').setView([KLONG_KRABUE_LAT, KLONG_KRABUE_LNG], 14);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; OpenStreetMap'
@@ -566,7 +621,7 @@
             const timestamp = now.toISOString().replace('T', ' ').substring(0, 16);
 
             const newReport = {
-                id: 'REP-' + Math.floor(1000 + Math.random() * 9000),
+                id: 'KB-' + Math.floor(1000 + Math.random() * 9000),
                 timestamp: timestamp,
                 type: document.getElementById('issue-type').value,
                 description: document.getElementById('issue-description').value,
@@ -593,7 +648,7 @@
             updateStats();
             updateMainMapMarkers();
 
-            alert('ส่งรายงานเรื่องร้องเรียนเรียบร้อยแล้ว! เจ้าหน้าที่จะเข้าตรวจสอบโดยเร็ว');
+            alert('ส่งรายงานเรื่องร้องเรียนไปยัง อบต.คลองกระบือ เรียบร้อยแล้ว!');
             switchTab('feed');
         }
 
@@ -631,8 +686,8 @@
             const report = reports.find(r => r.id === id);
             if (report) {
                 report.status = newStatus;
-                if (newStatus === 'in_progress') report.adminNote = 'เจ้าหน้าที่ได้รับเรื่องและกำลังดำเนินการจัดส่งช่างซ่อมแซม';
-                if (newStatus === 'resolved') report.adminNote = 'แก้ไขและปรับปรุงสภาพพื้นที่เสร็จสิ้นแล้ว';
+                if (newStatus === 'in_progress') report.adminNote = 'เจ้าหน้าที่ อบต.คลองกระบือ ได้รับเรื่องและกำลังดำเนินการจัดส่งช่างเข้าแก้ไข';
+                if (newStatus === 'resolved') report.adminNote = 'กองช่าง ดำเนินการแก้ไขและปรับปรุงพื้นที่เสร็จสิ้นแล้ว';
                 
                 saveReportsToStorage();
                 renderReports();
@@ -677,7 +732,7 @@
             const url = URL.createObjectURL(blob);
             const link = document.createElement("a");
             link.setAttribute("href", url);
-            link.setAttribute("download", `รายงานสภาพถนนชุมชน_${new Date().toISOString().substring(0,10)}.csv`);
+            link.setAttribute("download", `รายงานร้องเรียน_อบต_คลองกระบือ_${new Date().toISOString().substring(0,10)}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -697,11 +752,11 @@
                     <div><strong>รายละเอียด:</strong> ${r.description}</div>
                     <div><strong>วันเวลาที่แจ้ง:</strong> ${r.timestamp}</div>
                     <div><strong>ผู้แจ้งเรื่อง:</strong> ${r.reporter} (${r.phone})</div>
-                    <div><strong>พิกัดตำแหน่ง:</strong> <a href="https://maps.google.com/?q=${r.lat},${r.lng}" target="_blank" class="text-indigo-600 underline">${r.lat}, ${r.lng} (เปิดใน Google Maps)</a></div>
+                    <div><strong>พิกัดตำแหน่ง:</strong> <a href="https://maps.google.com/?q=${r.lat},${r.lng}" target="_blank" class="text-indigo-600 underline">${r.lat}, ${r.lng} (เปิดดูใน Google Maps)</a></div>
                     
                     ${r.adminNote ? `
                         <div class="p-3 bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-900 text-xs mt-3">
-                            <strong class="block mb-1"><i class="fa-solid fa-comment-dots mr-1"></i> บันทึกจากเจ้าหน้าที่:</strong>
+                            <strong class="block mb-1"><i class="fa-solid fa-comment-dots mr-1"></i> บันทึกจากเจ้าหน้าที่ อบต.:</strong>
                             ${r.adminNote}
                         </div>
                     ` : ''}
